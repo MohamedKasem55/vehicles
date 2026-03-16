@@ -7,6 +7,14 @@ import React, { useState, useEffect } from "react";
 import { IPageConfig } from "@/types/page";
 import { Pages } from "@/consts/pages";
 import { INBOX_SCHEMA, ITEMS_PER_PAGE, fetchInboxData } from "@/mocks/inbox";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import {
+  initializeTable,
+  onPageChange,
+  setLoading,
+  setTableData,
+} from "@/store/slices/tableSlice";
+import useInboxSchema from "@/hooks/dashboardHooks/useInboxSchema";
 
 const tabs: ITab[] = [
   { id: "outgoing", label: "الطلبات الصادرة", icon: OutgoingIcon },
@@ -15,27 +23,34 @@ const tabs: ITab[] = [
 
 function Inbox() {
   const page: Partial<IPageConfig> = Pages.inbox;
-
+  const dispatch = useAppDispatch();
+  const { totalItems, itemsPerPage, currentPage, loading } = useAppSelector(
+    (state) => state.table,
+  );
   const [activeTab, setActiveTab] = useState("outgoing");
-  const [currentPage, setCurrentPage] = useState(1);
-  const [data, setData] = useState<any[]>([]);
-  const [totalItems, setTotalItems] = useState(0);
-  const [loading, setLoading] = useState(false);
-
   useEffect(() => {
-    setLoading(true);
+    dispatch(setLoading(true));
+    dispatch(setTableData([]));
     fetchInboxData(activeTab, currentPage, ITEMS_PER_PAGE).then(
       ({ data, total }) => {
-        setData(data);
-        setTotalItems(total);
-        setLoading(false);
+        dispatch(
+          initializeTable({
+            itemsPerPage: ITEMS_PER_PAGE,
+            totalItems: total,
+          }),
+        );
+        dispatch(setTableData(data));
+        dispatch(setLoading(false));
       },
     );
   }, [activeTab, currentPage]);
 
+  useEffect(() => {
+    dispatch(onPageChange(1)); // reset page on tab change
+  }, [activeTab]);
+
   const handleTabChange = (tabId: string) => {
     setActiveTab(tabId);
-    setCurrentPage(1);
   };
 
   return (
@@ -49,15 +64,7 @@ function Inbox() {
         activeTabId={activeTab}
         onTabChange={handleTabChange}
       />
-      <Table
-        schema={INBOX_SCHEMA}
-        data={data}
-        loading={loading}
-        itemsPerPage={ITEMS_PER_PAGE}
-        currentPage={currentPage}
-        totalItems={totalItems}
-        onPageChange={setCurrentPage}
-      />
+      <Table tableSchema={page?.useTableSchema?.()!} />
     </div>
   );
 }

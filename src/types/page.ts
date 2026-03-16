@@ -1,4 +1,5 @@
 import { IconConfig } from "@/components/atoms/icon";
+import { IColumnSchema } from "@/store/slices/tableSlice";
 
 export interface IPageConfig {
   id: string;
@@ -7,6 +8,7 @@ export interface IPageConfig {
   dashboardIconConfig: IconConfig;
   pageTitle: string;
   pageTitleIconConfig: IconConfig;
+  useTableSchema: () => IColumnSchema[];
 }
 
 export enum PagesIds {

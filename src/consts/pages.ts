@@ -4,6 +4,7 @@ import MagnifyingGlassIcon from "@/components/atoms/icons/MagnifyingGlassIcon";
 import SettingIcon from "@/components/atoms/icons/SettingIcon";
 import AuthorityIcon from "@/components/atoms/icons/AuthorityIcon";
 import { IPageConfig, PagesIds } from "@/types/page";
+import useInboxSchema from "@/hooks/dashboardHooks/useInboxSchema";
 
 export const Pages: Record<PagesIds, IPageConfig> = {
   [PagesIds.SERVICES]: {
@@ -18,6 +19,8 @@ export const Pages: Record<PagesIds, IPageConfig> = {
       height: 24,
       strokeWidth: 4,
     },
+    useTableSchema : useInboxSchema
+
   },
   [PagesIds.INBOX]: {
     id: "inbox",
@@ -31,6 +34,7 @@ export const Pages: Record<PagesIds, IPageConfig> = {
       height: 24,
       strokeWidth: 4,
     },
+    useTableSchema : useInboxSchema
   },
   [PagesIds.INFORMATION]: {
     id: "information",
@@ -44,6 +48,8 @@ export const Pages: Record<PagesIds, IPageConfig> = {
       height: 24,
       strokeWidth: 4,
     },
+    useTableSchema : useInboxSchema
+
   },
   [PagesIds.SETTING]: {
     id: "settings",
@@ -57,6 +63,8 @@ export const Pages: Record<PagesIds, IPageConfig> = {
       height: 24,
       strokeWidth: 4,
     },
+    useTableSchema : useInboxSchema
+
   },
   [PagesIds.AUTHORITY]: {
     id: "authority",
@@ -70,5 +78,6 @@ export const Pages: Record<PagesIds, IPageConfig> = {
       height: 24,
       strokeWidth: 4,
     },
+    useTableSchema : useInboxSchema
   },
 };

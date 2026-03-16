@@ -1,3 +1,5 @@
+import { IColumnSchema } from "@/store/slices/tableSlice"
+
 export const ITEMS_PER_PAGE = 5
 
 const MOCK_DATA: Record<string, any[]> = {
@@ -55,7 +57,7 @@ export const fetchInboxData = (tabId: string, page: number, perPage: number): Pr
         }, 600)
     )
 
-export const INBOX_SCHEMA = [
+export const INBOX_SCHEMA :IColumnSchema[]= [
     { key: 'orderNumber',  label: 'رقم الطلب',              type: 'text',   cellCustomStyle: 'font-mono font-normal text-[10.2px] leading-4 tracking-normal align-middle' },
     { key: 'serviceName',  label: 'اسم الخدمة',             type: 'text',   cellCustomStyle: 'font-inter font-medium text-[11.9px] leading-5 tracking-normal align-middle' },
     { key: 'requester',    label: 'مقدم الطلب',             type: 'text' },
