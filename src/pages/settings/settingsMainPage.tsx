@@ -1,24 +1,21 @@
 import PageTitle from "@/components/molecules/pageTitle";
-import Table from "@/components/organisms/table";
-import { Pages } from "@/consts/pages";
+import TransportCities from "@/components/organisms/transportCities";
 import { ISidebarRoute, settingsSidebarRoutes } from "@/consts/sidebarRoutes";
-import { IPageConfig } from "@/types/page";
 import React from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 function SettingsMainPage() {
   let { pathname } = useLocation();
   const currentRoute = pathname.split("/")[pathname.split("/").length - 1];
-  
+
   const page: ISidebarRoute = settingsSidebarRoutes.find(
-    (pageConfig: ISidebarRoute) =>
-      pageConfig.route === currentRoute,
+    (pageConfig: ISidebarRoute) => pageConfig.route === currentRoute,
   )!;
-  
+
   return (
-    <div>
+    <div className="flex flex-col gap-4 p-5">
       <PageTitle pageTitle={page.displayText} pageTitleIcon={page.icon} />
-      {/* <Table tableSchema={page?.useTableSchema?.()!} /> */}
+      <TransportCities />
     </div>
   );
 }
