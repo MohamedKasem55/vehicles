@@ -11,73 +11,45 @@ export const Pages: Record<PagesIds, IPageConfig> = {
     id: "services",
     route: "/services",
     dashboardTitle: "الخدمات",
-    dashboardIconConfig: { icon: SuitcaseIcon, width: 48, height: 48 },
+    dashboardIcon: SuitcaseIcon,
     pageTitle: "الخدمات",
-    pageTitleIconConfig: {
-      icon: SuitcaseIcon,
-      width: 24,
-      height: 24,
-      strokeWidth: 4,
-    },
-    useTableSchema : useInboxSchema
-
+    pageTitleIcon: SuitcaseIcon,
+    useTableSchema: useInboxSchema,
   },
   [PagesIds.INBOX]: {
     id: "inbox",
     route: "/inbox",
     dashboardTitle: "صندوق المتابعة",
-    dashboardIconConfig: { icon: InboxIcon, width: 48, height: 48 },
+    dashboardIcon: InboxIcon,
     pageTitle: "صندوق المتابعة",
-    pageTitleIconConfig: {
-      icon: InboxIcon,
-      width: 24,
-      height: 24,
-      strokeWidth: 4,
-    },
-    useTableSchema : useInboxSchema
+    pageTitleIcon: InboxIcon,
+    useTableSchema: useInboxSchema,
   },
   [PagesIds.INFORMATION]: {
     id: "information",
     route: "/information",
     dashboardTitle: "الإستعلامات",
-    dashboardIconConfig: { icon: MagnifyingGlassIcon, width: 48, height: 48 },
+    dashboardIcon: MagnifyingGlassIcon,
     pageTitle: "الإستعلامات",
-    pageTitleIconConfig: {
-      icon: MagnifyingGlassIcon,
-      width: 24,
-      height: 24,
-      strokeWidth: 4,
-    },
-    useTableSchema : useInboxSchema
-
+    pageTitleIcon: MagnifyingGlassIcon,
+    useTableSchema: useInboxSchema,
   },
   [PagesIds.SETTING]: {
     id: "settings",
     route: "/settings/system-tables",
     dashboardTitle: "إعدادات النظام",
-    dashboardIconConfig: { icon: SettingIcon, width: 48, height: 48 },
+    dashboardIcon: SettingIcon,
     pageTitle: "إعدادات النظام",
-    pageTitleIconConfig: {
-      icon: SettingIcon,
-      width: 24,
-      height: 24,
-      strokeWidth: 4,
-    },
-    useTableSchema : useInboxSchema
-
+    pageTitleIcon: SettingIcon,
+    useTableSchema: useInboxSchema,
   },
   [PagesIds.AUTHORITY]: {
     id: "authority",
     route: "/authority",
     dashboardTitle: "الصلاحيات",
-    dashboardIconConfig: { icon: AuthorityIcon, width: 48, height: 48 },
+    dashboardIcon: AuthorityIcon,
     pageTitle: "الصلاحيات",
-    pageTitleIconConfig: {
-      icon: AuthorityIcon,
-      width: 24,
-      height: 24,
-      strokeWidth: 4,
-    },
-    useTableSchema : useInboxSchema
+    pageTitleIcon: AuthorityIcon,
+    useTableSchema: useInboxSchema,
   },
 };

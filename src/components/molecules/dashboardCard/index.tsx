@@ -4,7 +4,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function DashboardCard({
-  dashboardIconConfig,
+  dashboardIcon,
   dashboardTitle,
   id,
   route,
@@ -17,7 +17,7 @@ function DashboardCard({
       >
         <div className="flex flex-col items-center justify-center gap-3">
           <IconWrapper
-            iconConfig={dashboardIconConfig!}
+            iconConfig={{ icon: dashboardIcon!, width: 48, height: 48 }}
             customClasses={
               "bg-[#506A62] w-20 h-20 rounded-[16px] text-[#C5A059]"
             }

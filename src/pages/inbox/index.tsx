@@ -57,7 +57,7 @@ function Inbox() {
     <div className="flex flex-col p-5 gap-5">
       <PageTitle
         pageTitle={page.pageTitle}
-        pageTitleIconConfig={page.pageTitleIconConfig}
+        pageTitleIcon={page.pageTitleIcon}
       />
       <TabGroup
         tabs={tabs}

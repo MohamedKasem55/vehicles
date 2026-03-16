@@ -1,13 +1,13 @@
-import { IconConfig } from "@/components/atoms/icon";
+import React from "react";
 import { IColumnSchema } from "@/store/slices/tableSlice";
 
 export interface IPageConfig {
   id: string;
   route: string;
   dashboardTitle: string;
-  dashboardIconConfig: IconConfig;
+  dashboardIcon: React.FC<React.SVGProps<SVGSVGElement>>;
   pageTitle: string;
-  pageTitleIconConfig: IconConfig;
+  pageTitleIcon: React.FC<React.SVGProps<SVGSVGElement>>;
   useTableSchema: () => IColumnSchema[];
 }
 

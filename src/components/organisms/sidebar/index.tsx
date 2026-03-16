@@ -12,11 +12,13 @@ function SidebarRoutes() {
   const settingPageConfig: IPageConfig = Pages[PagesIds.SETTING];
 
   return (
-    <div className="rounded-[11px] border-1 border-[#E5E7EB] overflow-hidden w-[288px]">
+    <div className=" w-[288px]">
       <PageTitle {...settingPageConfig} />
+      <div className="border-b-2 border-x-2 border-[#E5E7EB] rounded-b-2xl overflow-hidden py-4 bg-white">
       {settingsSidebarRoutes.map((route: ISidebarRoute) => (
         <SidebarRoute {...route} isSelected={selectedRoute === route.route} />
       ))}
+      </div>
     </div>
   );
 }

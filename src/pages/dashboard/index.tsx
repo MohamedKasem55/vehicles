@@ -19,7 +19,7 @@ function Dashboard() {
         {Object.values(Pages).map((dashboardCard: Partial<IPageConfig>) => (
           <DashboardCard
             key={dashboardCard.id}
-            dashboardIconConfig={dashboardCard.dashboardIconConfig!}
+            dashboardIcon={dashboardCard.dashboardIcon!}
             id={dashboardCard.id!}
             dashboardTitle={dashboardCard.dashboardTitle!}
             route={dashboardCard.route!}
