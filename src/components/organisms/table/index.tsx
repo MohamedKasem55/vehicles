@@ -5,7 +5,7 @@ import React from "react";
 import { useAppSelector } from "@/store/hooks";
 import { IColumnSchema } from "@/store/slices/tableSlice";
 
-function Table({ tableSchema }: { tableSchema: IColumnSchema[] }) {
+function Table({ tableSchema,children }: { tableSchema: IColumnSchema[] ,children:React.ReactNode}) {
   const { tableData, loading, currentPage, itemsPerPage } = useAppSelector(
     (state) => state.table,
   );
@@ -30,6 +30,7 @@ function Table({ tableSchema }: { tableSchema: IColumnSchema[] }) {
       className="flex-1 overflow-hidden border-[#E5E7EB] border-1 rounded-[10px] shadow-sm"
       dir="rtl"
     >
+      {children}
       <table className="flex-1 w-full">
         <thead>
           <tr className="bg-[#F9FAFB] h-[50px]">

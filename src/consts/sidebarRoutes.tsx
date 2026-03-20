@@ -13,12 +13,18 @@ import VehicleRegistrationIcon from "@/components/atoms/icons/sidebar/VehicleReg
 import VehicleAssignmentIcon from "@/components/atoms/icons/sidebar/VehicleAssignmentIcon";
 import PrintPermitsIcon from "@/components/atoms/icons/sidebar/PrintPermitsIcon";
 import React from "react";
+import TransportCities from "@/components/organisms/transportCities";
+import { IColumnSchema } from "@/store/slices/tableSlice";
+import useTransportCitiesTableSchema from "@/hooks/settingsTableSchemas/useTransportCitiesTableSchema";
 
 export interface ISidebarRoute {
   route: string;
   icon: React.FC<React.SVGProps<SVGSVGElement>>;
   displayText: string;
   isSelected: boolean;
+  insideTableExtraComponent?: React.ReactNode;
+  useTableSchema?: () => IColumnSchema[];
+  hasTable ? : boolean
 }
 
 export const settingsSidebarRoutes: ISidebarRoute[] = [
@@ -87,6 +93,9 @@ export const settingsSidebarRoutes: ISidebarRoute[] = [
     icon: TransportCitiesIcon,
     displayText: "مدن نقل الأصناف",
     isSelected: false,
+    hasTable:true,
+    insideTableExtraComponent : <TransportCities />,
+    useTableSchema: useTransportCitiesTableSchema
   },
   {
     route: "vehicle-registration",

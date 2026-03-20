@@ -14,7 +14,7 @@ import {
   setLoading,
   setTableData,
 } from "@/store/slices/tableSlice";
-import useInboxSchema from "@/hooks/dashboardHooks/useInboxSchema";
+import useInboxSchema from "@/hooks/useInboxSchema";
 
 const tabs: ITab[] = [
   { id: "outgoing", label: "الطلبات الصادرة", icon: OutgoingIcon },
