@@ -31,7 +31,7 @@ function TransportCities() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="bg-white rounded-[10px] border border-[#E5E7EB] shadow-sm p-6 flex flex-col gap-6"
+      className="bg-white p-6 flex flex-col gap-6"
       dir="rtl"
     >
       <div className="flex flex-row gap-4">
@@ -43,9 +43,9 @@ function TransportCities() {
       <div className="flex justify-center">
         <Button
           type="submit"
+          variant="primary"
           label="حفظ"
           icon={<SaveIcon width={20} height={20} />}
-          className="bg-[#348C68]! text-white"
         />
       </div>
     </form>

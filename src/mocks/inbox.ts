@@ -1,6 +1,6 @@
 import { IColumnSchema } from "@/store/slices/tableSlice"
 
-export const ITEMS_PER_PAGE = 5
+export const INBOX_ITEMS_PER_PAGE = 5
 
 const MOCK_DATA: Record<string, any[]> = {
     outgoing: [

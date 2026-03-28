@@ -2,7 +2,7 @@ import React from "react";
 import LeftChevronIcon from "@/components/atoms/icons/LeftChevronIcon";
 import RightChevronIcon from "@/components/atoms/icons/RightChevronIcon";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { onPageChange } from "@/store/slices/tableSlice";
+import { setCurrentPage } from "@/store/slices/tableSlice";
 
 
 const btnStyle = {
@@ -62,7 +62,7 @@ function Pagination() {
       {/* Page buttons - left side in RTL */}
       <div className="flex flex-row items-center gap-1">
         <button
-          onClick={() => dispatch(onPageChange(currentPage + 1))}
+          onClick={() => dispatch(setCurrentPage(currentPage + 1))}
           disabled={currentPage === totalPages}
           className="p-0! flex items-center justify-center w-[32px] h-[32px] rounded-[8px] disabled:opacity-40 cursor-pointer"
           style={btnStyle}
@@ -73,7 +73,7 @@ function Pagination() {
         {pages.map((page) => (
           <button
             key={page}
-            onClick={() => dispatch(onPageChange(page))}
+            onClick={() => dispatch(setCurrentPage(page))}
             className="p-0 flex items-center justify-center w-[32px] h-[32px] rounded-[8px] cursor-pointer"
             style={
               page === currentPage
@@ -93,7 +93,7 @@ function Pagination() {
         ))}
 
         <button
-          onClick={() => dispatch(onPageChange(currentPage - 1))}
+          onClick={() => dispatch(setCurrentPage(currentPage - 1))}
           disabled={currentPage === 1}
           className="p-0! flex items-center justify-center w-[32px] h-[32px] rounded-[8px] disabled:opacity-40 cursor-pointer"
           style={btnStyle}

@@ -9,7 +9,7 @@ import { useLocation, useParams } from "react-router-dom";
 function SidebarRoutes() {
   let { pathname } = useLocation();
   const selectedRoute = pathname.split("/")[pathname.split("/").length - 1];
-  const settingPageConfig: IPageConfig = Pages[PagesIds.SETTING];
+  const settingPageConfig: IPageConfig = Pages[PagesIds.SETTINGS];
 
   return (
     <div className=" w-[288px]">

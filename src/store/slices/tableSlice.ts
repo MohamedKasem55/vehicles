@@ -7,7 +7,10 @@ export interface IColumnSchema {
   type: "text" | "status" | "action";
   cellStatusKey?: string;
   cellCustomStyle?: string;
-  icon?: React.ReactNode;
+  icon?: React.FC<React.SVGProps<SVGSVGElement>>;
+  iconClassName?: string;
+  loading?: (item: any) => boolean;
+  disabled?: (item: any) => boolean;
   onClick?: (item: any, col: IColumnSchema) => void;
 }
 
@@ -34,7 +37,7 @@ const tableSlice = createSlice({
   name: "table",
   initialState,
   reducers: {
-    onPageChange(state, action: PayloadAction<number>) {
+    setCurrentPage(state, action: PayloadAction<number>) {
       state.currentPage = action.payload;
     },
     setLoading(state, action: PayloadAction<boolean>) {
@@ -56,5 +59,5 @@ const tableSlice = createSlice({
   },
 });
 
-export const { onPageChange, setLoading, setTableData, initializeTable } = tableSlice.actions;
+export const { setCurrentPage, setLoading, setTableData, initializeTable } = tableSlice.actions;
 export default tableSlice.reducer;

@@ -4,6 +4,7 @@ import Spinner from "@/components/atoms/spinner";
 import React from "react";
 import { useAppSelector } from "@/store/hooks";
 import { IColumnSchema } from "@/store/slices/tableSlice";
+import Button from "@/components/atoms/button";
 
 function Table({ tableSchema,children }: { tableSchema: IColumnSchema[] ,children:React.ReactNode}) {
   const { tableData, loading, currentPage, itemsPerPage } = useAppSelector(
@@ -12,15 +13,21 @@ function Table({ tableSchema,children }: { tableSchema: IColumnSchema[] ,childre
 
   const renderCell = (item: any, col: any) => {
     if (col.type === "text") return item[col.key] || "-";
-    else if (col.type === "action")
+    else if (col.type === "action") {
+      const Icon = col.icon;
       return (
-        <div
-          className="bg-transparent hover:opacity-60 cursor-pointer"
+        <div className="flex-1 flex flex-col items-center justify-center ">
+
+        <Button
+          variant="outline"
+          icon={Icon ? <Icon className={col.iconClassName} /> : undefined}
+          loading={col.loading?.(item)}
+          disabled={col.disabled?.(item)}
           onClick={() => col.onClick(item, col)}
-        >
-          {col.icon || "-"}
-        </div>
+          />
+          </div>
       );
+    }
     else if (col.type === "status")
       return <StatusBadge status={item[col.cellStatusKey]} />;
   };

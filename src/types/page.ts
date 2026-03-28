@@ -15,6 +15,6 @@ export enum PagesIds {
   SERVICES = "services",
   INBOX = "inbox",
   INFORMATION = "information",
-  SETTING = "setting",
+  SETTINGS = "settings",
   AUTHORITY = "authority",
 }

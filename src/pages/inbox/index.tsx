@@ -6,15 +6,15 @@ import IncomingIcon from "@/components/atoms/icons/IncomingIcon";
 import React, { useState, useEffect } from "react";
 import { IPageConfig } from "@/types/page";
 import { Pages } from "@/consts/pages";
-import { INBOX_SCHEMA, ITEMS_PER_PAGE, fetchInboxData } from "@/mocks/inbox";
+import { INBOX_SCHEMA, INBOX_ITEMS_PER_PAGE, fetchInboxData } from "@/mocks/inbox";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import {
   initializeTable,
-  onPageChange,
+  setCurrentPage,
   setLoading,
   setTableData,
 } from "@/store/slices/tableSlice";
-import useInboxSchema from "@/hooks/useInboxSchema";
+import useInboxTableSchema from "@/hooks/useInboxTableSchema";
 
 const tabs: ITab[] = [
   { id: "outgoing", label: "الطلبات الصادرة", icon: OutgoingIcon },
@@ -31,11 +31,11 @@ function Inbox() {
   useEffect(() => {
     dispatch(setLoading(true));
     dispatch(setTableData([]));
-    fetchInboxData(activeTab, currentPage, ITEMS_PER_PAGE).then(
+    fetchInboxData(activeTab, currentPage, INBOX_ITEMS_PER_PAGE).then(
       ({ data, total }) => {
         dispatch(
           initializeTable({
-            itemsPerPage: ITEMS_PER_PAGE,
+            itemsPerPage: INBOX_ITEMS_PER_PAGE,
             totalItems: total,
           }),
         );
@@ -46,7 +46,7 @@ function Inbox() {
   }, [activeTab, currentPage]);
 
   useEffect(() => {
-    dispatch(onPageChange(1)); // reset page on tab change
+    dispatch(setCurrentPage(1)); // reset page on tab change
   }, [activeTab]);
 
   const handleTabChange = (tabId: string) => {

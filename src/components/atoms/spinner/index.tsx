@@ -7,7 +7,7 @@ interface SpinnerProps {
 function Spinner({ size = 'md' }: SpinnerProps) {
   if (size === 'sm')
     return (
-      <div className="w-4 h-4 rounded-full border-2 border-white/40 border-t-white animate-spin" />
+      <div className="w-4 h-4 rounded-full border-2 border-current/30 border-t-current animate-spin" />
     )
 
   return (

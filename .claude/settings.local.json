@@ -7,7 +7,11 @@
       "Bash(BASE=\"E:/engineering/minstery of defense/src/assets/svg\"\nfor f in dashboard.svg inbox.svg inbox-page.svg left-chevron.svg logo.svg logout.svg pending.svg profile.svg rejected.svg right-chevron.svg search.svg setting.svg shield.svg suitcase.svg completed.svg; do\n  cp \"$BASE/$f\" \"$BASE/general/$f\"\ndone\necho \"SVGs copied\")",
       "Bash(BASE=\"E:/engineering/minstery of defense/src\"\ncp \"$BASE/components/ui/field.tsx\" \"$BASE/components/atoms/field.tsx\"\ncp \"$BASE/components/ui/input.tsx\" \"$BASE/components/atoms/input.tsx\"\ncp \"$BASE/components/ui/label.tsx\" \"$BASE/components/atoms/label.tsx\"\ncp \"$BASE/components/ui/separator.tsx\" \"$BASE/components/atoms/separator.tsx\"\necho \"UI files copied to atoms/\")",
       "Bash(BASE=\"E:/engineering/minstery of defense/src\"\ncp \"$BASE/components/pages/dashboard/index.tsx\" \"$BASE/pages/dashboard/index.tsx\"\ncp \"$BASE/components/pages/inbox/index.tsx\" \"$BASE/pages/inbox/index.tsx\"\ncp \"$BASE/components/pages/login/index.tsx\" \"$BASE/pages/login/index.tsx\"\ncp \"$BASE/components/pages/settings/index.tsx\" \"$BASE/pages/settings/index.tsx\"\ncp \"$BASE/components/pages/settings/settingsMainPage.tsx\" \"$BASE/pages/settings/settingsMainPage.tsx\"\necho \"Pages copied\")",
-      "Bash(find \"E:/engineering/minstery of defense/src/components/molecules\" -type f | sort\necho \"---\"\nfind \"E:/engineering/minstery of defense/src/components/pages\" -type f | sort 2>/dev/null || echo \"no pages\"\necho \"---\"\nfind \"E:/engineering/minstery of defense/src\" -name \"sidebarRoutes*\" -o -name \"pages.ts\" 2>/dev/null | sort)"
+      "Bash(find \"E:/engineering/minstery of defense/src/components/molecules\" -type f | sort\necho \"---\"\nfind \"E:/engineering/minstery of defense/src/components/pages\" -type f | sort 2>/dev/null || echo \"no pages\"\necho \"---\"\nfind \"E:/engineering/minstery of defense/src\" -name \"sidebarRoutes*\" -o -name \"pages.ts\" 2>/dev/null | sort)",
+      "Bash(for f:*)",
+      "Bash(do cp:*)",
+      "Bash(rm \"$f.tsx\")",
+      "Bash(done)"
     ]
   }
 }

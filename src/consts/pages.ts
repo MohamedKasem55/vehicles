@@ -4,7 +4,7 @@ import MagnifyingGlassIcon from "@/components/atoms/icons/MagnifyingGlassIcon";
 import SettingIcon from "@/components/atoms/icons/SettingIcon";
 import AuthorityIcon from "@/components/atoms/icons/AuthorityIcon";
 import { IPageConfig, PagesIds } from "@/types/page";
-import useInboxSchema from "@/hooks/useInboxSchema";
+import useInboxTableSchema from "@/hooks/useInboxTableSchema";
 
 export const Pages: Record<PagesIds, IPageConfig> = {
   [PagesIds.SERVICES]: {
@@ -14,7 +14,7 @@ export const Pages: Record<PagesIds, IPageConfig> = {
     dashboardIcon: SuitcaseIcon,
     pageTitle: "الخدمات",
     pageTitleIcon: SuitcaseIcon,
-    useTableSchema: useInboxSchema,
+    useTableSchema: useInboxTableSchema,
   },
   [PagesIds.INBOX]: {
     id: "inbox",
@@ -23,7 +23,7 @@ export const Pages: Record<PagesIds, IPageConfig> = {
     dashboardIcon: InboxIcon,
     pageTitle: "صندوق المتابعة",
     pageTitleIcon: InboxIcon,
-    useTableSchema: useInboxSchema,
+    useTableSchema: useInboxTableSchema,
   },
   [PagesIds.INFORMATION]: {
     id: "information",
@@ -32,16 +32,16 @@ export const Pages: Record<PagesIds, IPageConfig> = {
     dashboardIcon: MagnifyingGlassIcon,
     pageTitle: "الإستعلامات",
     pageTitleIcon: MagnifyingGlassIcon,
-    useTableSchema: useInboxSchema,
+    useTableSchema: useInboxTableSchema,
   },
-  [PagesIds.SETTING]: {
+  [PagesIds.SETTINGS]: {
     id: "settings",
     route: "/settings/system-tables",
     dashboardTitle: "إعدادات النظام",
     dashboardIcon: SettingIcon,
     pageTitle: "إعدادات النظام",
     pageTitleIcon: SettingIcon,
-    useTableSchema: useInboxSchema,
+    useTableSchema: useInboxTableSchema,
   },
   [PagesIds.AUTHORITY]: {
     id: "authority",
@@ -50,6 +50,6 @@ export const Pages: Record<PagesIds, IPageConfig> = {
     dashboardIcon: AuthorityIcon,
     pageTitle: "الصلاحيات",
     pageTitleIcon: AuthorityIcon,
-    useTableSchema: useInboxSchema,
+    useTableSchema: useInboxTableSchema,
   },
 };

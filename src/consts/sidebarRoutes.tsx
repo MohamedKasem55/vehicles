@@ -16,6 +16,11 @@ import React from "react";
 import TransportCities from "@/components/organisms/transportCities";
 import { IColumnSchema } from "@/store/slices/tableSlice";
 import useTransportCitiesTableSchema from "@/hooks/settingsTableSchemas/useTransportCitiesTableSchema";
+import useSystemTablesTableSchema from "@/hooks/settingsTableSchemas/useSystemTablesTableSchema";
+import useVehicleCompaniesTableSchema from "@/hooks/settingsTableSchemas/useVehicleCompaniesTableSchema";
+import { fetchSystemTablesData, SYSTEM_TABLES_ITEMS_PER_PAGE } from "@/mocks/systemTables";
+import { fetchVehicleCompaniesData, VEHICLE_COMPANIES_ITEMS_PER_PAGE } from "@/mocks/vehicleCompanies";
+import { fetchTransportCitiesData, TRANSPORT_CITIES_ITEMS_PER_PAGE } from "@/mocks/transportCities";
 
 export interface ISidebarRoute {
   route: string;
@@ -23,8 +28,12 @@ export interface ISidebarRoute {
   displayText: string;
   isSelected: boolean;
   insideTableExtraComponent?: React.ReactNode;
+  beforeTableExtraComponent?: React.ReactNode;
+  afterTableExtraComponent?: React.ReactNode;
   useTableSchema?: () => IColumnSchema[];
-  hasTable ? : boolean
+  fetchData?: (page: number, perPage: number) => Promise<{ data: any[]; total: number }>;
+  itemsPerPage?: number;
+  hasTable?: boolean;
 }
 
 export const settingsSidebarRoutes: ISidebarRoute[] = [
@@ -33,12 +42,20 @@ export const settingsSidebarRoutes: ISidebarRoute[] = [
     icon: SystemTablesIcon,
     displayText: "جداول النظام",
     isSelected: false,
+    hasTable: true,
+    useTableSchema: useSystemTablesTableSchema,
+    fetchData: fetchSystemTablesData,
+    itemsPerPage: SYSTEM_TABLES_ITEMS_PER_PAGE,
   },
   {
     route: "vehicle-companies",
     icon: VehicleCompaniesIcon,
     displayText: "شركات المركبات",
     isSelected: false,
+    hasTable: true,
+    useTableSchema: useVehicleCompaniesTableSchema,
+    fetchData: fetchVehicleCompaniesData,
+    itemsPerPage: VEHICLE_COMPANIES_ITEMS_PER_PAGE,
   },
   {
     route: "vehicle-models",
@@ -93,9 +110,11 @@ export const settingsSidebarRoutes: ISidebarRoute[] = [
     icon: TransportCitiesIcon,
     displayText: "مدن نقل الأصناف",
     isSelected: false,
-    hasTable:true,
-    insideTableExtraComponent : <TransportCities />,
-    useTableSchema: useTransportCitiesTableSchema
+    hasTable: true,
+    insideTableExtraComponent: <TransportCities />,
+    useTableSchema: useTransportCitiesTableSchema,
+    fetchData: fetchTransportCitiesData,
+    itemsPerPage: TRANSPORT_CITIES_ITEMS_PER_PAGE,
   },
   {
     route: "vehicle-registration",
