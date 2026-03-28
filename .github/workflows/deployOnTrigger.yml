@@ -21,13 +21,5 @@ jobs:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-      - name: Output Deployment URL
-        run: |
-          if [ "${{ steps.deploy-prod.outputs.preview-url }}" != "" ]; then
-            echo "Production URL: ${{ steps.deploy-prod.outputs.preview-url }}"
-          fi
-          if [ "${{ steps.deploy-preview.outputs.preview-url }}" != "" ]; then
-            echo "Preview URL: ${{ steps.deploy-preview.outputs.preview-url }}"
-          fi
     
     
