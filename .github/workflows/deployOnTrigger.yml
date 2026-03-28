@@ -1,6 +1,7 @@
 name: Deploy to Vercel On http trigger
 on:
   repository_dispatch:
+    types: [deploy-trigger, deploy-production, deploy-preview]
 jobs:
   deploy:
     runs-on: ubuntu-latest
