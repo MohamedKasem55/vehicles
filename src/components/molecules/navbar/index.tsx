@@ -24,11 +24,12 @@ function Navbar() {
     <div className="flex flex-row items-center justify-between pl-20">
       <div className="flex flex-row items-center justify-between gap-8">
 
-      {NavbarButtons.map((navbarButton: INavbarButton,index:number) => (
+      {NavbarButtons.map((navbarButton: Partial<INavbarButton>,index:number) => (
         <>
         <NavbarButton
-        icon={navbarButton.icon}
-        text={navbarButton.text}
+        id={navbarButton.id!}
+        icon={navbarButton.icon!}
+        text={navbarButton.text!}
         clickHandler={navbarButtonClickHandler}
         />
         {(index !==NavbarButtons.length-1) && <span className="text-[#D1D5DB]">|</span>}

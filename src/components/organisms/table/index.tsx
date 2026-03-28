@@ -6,7 +6,7 @@ import { useAppSelector } from "@/store/hooks";
 import { IColumnSchema } from "@/store/slices/tableSlice";
 import Button from "@/components/atoms/button";
 
-function Table({ tableSchema,children }: { tableSchema: IColumnSchema[] ,children:React.ReactNode}) {
+function Table({ tableSchema,children }: { tableSchema: IColumnSchema[] ,children?: React.ReactNode}) {
   const { tableData, loading, currentPage, itemsPerPage } = useAppSelector(
     (state) => state.table,
   );

@@ -35,14 +35,12 @@ function useInboxTableSchema(): IColumnSchema[] {
       key: "edit",
       label: "تعديل",
       type: "action",
-      icon: "✏️",
       onClick: onEditHandler,
     },
     {
       key: "view",
       label: "عرض",
       type: "action",
-      icon: "👁️",
       onClick: (row: any) => alert(`عرض: ${row.requester}`),
     },
   ];

@@ -65,6 +65,6 @@ export const INBOX_SCHEMA :IColumnSchema[]= [
     { key: 'details',      label: 'التفاصيل',               type: 'text' },
     { key: 'decision',     label: 'القرار المتخذ',          type: 'status', cellStatusKey: 'decision' },
     { key: 'decisionDate', label: 'تاريخ اتخاذ القرار',     type: 'text' },
-    { key: 'edit',         label: 'تعديل',                  type: 'action', icon: '✏️', onClick: (row: any) => alert(`تعديل: ${row.requester}`) },
-    { key: 'view',         label: 'عرض',                    type: 'action', icon: '👁️', onClick: (row: any) => alert(`عرض: ${row.requester}`) },
+    { key: 'edit',         label: 'تعديل',                  type: 'action', onClick: (row: any) => alert(`تعديل: ${row.requester}`) },
+    { key: 'view',         label: 'عرض',                    type: 'action', onClick: (row: any) => alert(`عرض: ${row.requester}`) },
 ]
