@@ -41,7 +41,8 @@ jobs:
         id: slug
         run: |
           BRANCH="${{ github.event.client_payload.branch }}"
-          SLUG=$(echo "$BRANCH" | sed 's/[^a-zA-Z0-9]/-/g' | tr '[:upper:]' '[:lower:]')
+          # Remove common prefixes like feature/, fix/, chore/
+          SLUG=$(echo "$BRANCH" | sed 's|.*/||' | sed 's/[^a-zA-Z0-9]/-/g' | tr '[:upper:]' '[:lower:]')
           echo "slug=$SLUG" >> $GITHUB_OUTPUT
 
       - name: Deploy to Vercel
@@ -50,6 +51,6 @@ jobs:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-          vercel-args: ${{ github.event.client_payload.branch == 'main' && '--prod' || '' }}
+          vercel-args: ${{ github.event.client_payload.branch == 'main' && '--prod' || format('--name vehicles-app-{0}', steps.slug.outputs.slug) }}
           alias-domains: |
             vehicles-app-${{ steps.slug.outputs.slug }}.vercel.app
