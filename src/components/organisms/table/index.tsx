@@ -20,7 +20,8 @@ function Table({ tableSchema,children }: { tableSchema: IColumnSchema[] ,childre
 
         <Button
           variant="outline"
-          iconRight={Icon ? <Icon className={col.iconClassName} /> : undefined}
+          icon={Icon ? <Icon className={col.iconClassName} /> : undefined}
+          iconPosition="right"
           loading={col.loading?.(item)}
           disabled={col.disabled?.(item)}
           onClick={() => col.onClick(item, col)}

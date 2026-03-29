@@ -13,15 +13,16 @@ import VehicleRegistrationIcon from "@/components/atoms/icons/sidebar/VehicleReg
 import VehicleAssignmentIcon from "@/components/atoms/icons/sidebar/VehicleAssignmentIcon";
 import PrintPermitsIcon from "@/components/atoms/icons/sidebar/PrintPermitsIcon";
 import React from "react";
-import TransportCities from "@/components/organisms/transportCities";
+import TransportCities from "@/pages/settings/transportCities/components/transportCitiesForm";
 import { IColumnSchema } from "@/store/slices/tableSlice";
-import useTransportCitiesTableSchema from "@/pages/settings/hooks/useTransportCitiesTableSchema";
-import useSystemTablesTableSchema from "@/pages/settings/hooks/useSystemTablesTableSchema";
-import useVehicleCompaniesTableSchema from "@/pages/settings/hooks/useVehicleCompaniesTableSchema";
+import useTransportCitiesTableSchema from "@/pages/settings/transportCities/hooks/useTransportCitiesTableSchema";
+import useSystemTablesTableSchema from "@/pages/settings/systemsTable/hooks/useSystemTablesTableSchema";
+import useVehicleCompaniesTableSchema from "@/pages/settings/vehiclesCompanies/hooks/useVehicleCompaniesTableSchema";
 import { fetchSystemTablesData, SYSTEM_TABLES_ITEMS_PER_PAGE } from "@/mocks/systemTables";
 import { fetchVehicleCompaniesData, VEHICLE_COMPANIES_ITEMS_PER_PAGE } from "@/mocks/vehicleCompanies";
 import { fetchTransportCitiesData, TRANSPORT_CITIES_ITEMS_PER_PAGE } from "@/mocks/transportCities";
-import Search from "@/pages/settings/components/systemsTable/search";
+import Search from "@/pages/settings/systemsTable/components/search";
+import VehicleComapnyForm from "@/pages/settings/vehiclesCompanies/components/vehicleComapnyForm";
 
 export interface ISidebarRoute {
   route: string;
@@ -58,6 +59,7 @@ export const settingsSidebarRoutes: ISidebarRoute[] = [
     useTableSchema: useVehicleCompaniesTableSchema,
     fetchData: fetchVehicleCompaniesData,
     itemsPerPage: VEHICLE_COMPANIES_ITEMS_PER_PAGE,
+    insideTableExtraComponent:<VehicleComapnyForm/>
   },
   {
     route: "vehicle-models",

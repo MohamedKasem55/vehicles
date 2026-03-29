@@ -1,10 +1,10 @@
 import React from "react";
-import { FieldLabel } from "@/components/atoms/field";
-import { Input } from "@/components/atoms/input";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useNavigate } from "react-router-dom";
+import Input from "@/components/atoms/input/input";
+import Button from "@/components/atoms/button";
 
 const schema = z.object({
   username: z.string().min(3, "اسم المستخدم يجب أن يكون 3 أحرف على الأقل"),
@@ -14,22 +14,22 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>;
 
 function Login() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
-    formState: { errors ,isValid},
+    formState: { errors, isValid },
   } = useForm<FormData>({
     defaultValues: {
       username: "",
       password: "",
     },
     resolver: zodResolver(schema),
-    mode:'onBlur'
+    mode: "onBlur",
   });
-  const submitHandler = ()=>{
-    navigate("/dashboard")
-  }
+  const submitHandler = () => {
+    navigate("/dashboard");
+  };
   return (
     <div className="bg-[#104731] w-full flex-1 flex flex-col items-center justify-center">
       <div className="bg-[#F1F1F2] rounded-lg flex flex-col items-center justify-center p-10 g-2 m-w-[370px]">
@@ -39,56 +39,38 @@ function Login() {
         <div className="text-[#436D5D] font-[Inter] font-bold text-[32px] ">
           تسجيل الدخول
         </div>
-        <form className="flex flex-col gap-6 w-full" onSubmit={handleSubmit(submitHandler,submitHandler)}>
+        <form
+          className="flex flex-col gap-6 w-full"
+          onSubmit={handleSubmit(submitHandler, submitHandler)}
+        >
           <div className="flex flex-col gap-1">
-            <FieldLabel
-              htmlFor="username"
-              className="text-[#154130] font-medium font-[tajwal] text-[16px] leading-[100%] tracking-[-0.28px]"
-            >
-              اسم المستخدم :
-            </FieldLabel>
             <Input
-              {...register("username")}
-              id="username"
+              label=" اسم المستخدم :"
               type="text"
+              registration={register("username")}
               placeholder="اسم المستخدم"
-              className={`w-full h-[45px] rounded-[14px] bg-white placeholder:text-gray 
-                ${!errors.username?'border-2 border-[#E2E6E7]':'border border-red-500'}`}
+              labelCustomClasses="!text-[#154130] "
+              inputCustomClasses={`w-full h-[45px] border-2 border-[#E2E6E7]`}
+              error={errors.username}
             />
-            {errors.username && (
-              <span className="text-red-500 text-sm text-right">
-                {errors.username.message}
-              </span>
-            )}
           </div>
           <div className="flex flex-col gap-1">
-            <FieldLabel
-              htmlFor="username"
-              className="text-[#154130] font-medium font-[tajwal] text-[16px] leading-[100%] tracking-[-0.28px] "
-            >
-              {" "}
-              كلمة المرور :
-            </FieldLabel>
             <Input
-              {...register("password")}
-              id="password"
+              registration={register("password")}
               type="password"
+              label="كلمة المرور :"
               placeholder="كلمة المرور"
-              className={`w-full h-[45px] rounded-[14px] bg-white placeholder:text-gray 
-                ${!errors.password?'border-2 border-[#E2E6E7]':'border border-red-500'}`}
+              labelCustomClasses="!text-[#154130] "
+              inputCustomClasses={`w-full h-[45px] border-2 border-[#E2E6E7]`}
+              error={errors.username}
             />
-            {errors.password && (
-              <span className="text-red-500 text-sm text-right">
-                {errors.password.message}
-              </span>
-            )}
           </div>
-        <button disabled={!isValid && false} type="submit" className="w-full h-[46px] !bg-[#104731] text-white
-         disabled:!bg-gray-300 disabled:!text-gray-500 disabled:!cursor-not-allowed hover:opacity-70
-         shadow-lg shadow-gray-500/50   hover:shadow-xl hover:shadow-gray-600/50  transition-shadow
-         ">
-          تسجيل الدخول
-        </button>
+          <Button
+            disabled={!isValid && false}
+            type="submit"
+            label="تسجيل الدخول"
+            className="w-full h-[46px] bg-[#104731]! shadow-lg shadow-gray-500/50  transition-shadow"
+          />
         </form>
       </div>
     </div>

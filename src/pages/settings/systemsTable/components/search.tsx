@@ -28,7 +28,7 @@ const options: React.OptionHTMLAttributes<HTMLOptionElement>[] = [
      bg-white flex flex-row justify-between
      p-5 gap-5
      ">
-      <Button loading={loading} label="إضافة" iconRight={<PlusIcon/>} loaderPosition="left"/>
+      <Button loading={loading} label="إضافة" icon={<PlusIcon/>} iconPosition="right" loaderPosition="left"/>
       <Select options={options} registration={register("color")} placeholder="بحث في الألوان" />
     </div>
   );

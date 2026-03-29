@@ -19,7 +19,7 @@ const durationOptions: React.OptionHTMLAttributes<HTMLOptionElement>[] = [
   { value: '10', label: '10 سنوات' },
 ]
 
-function TransportCities() {
+function TransportCitiesForm() {
   const { register, handleSubmit } = useForm<ITransportCitiesForm>({
     defaultValues: { fromCity: '', toCity: '', duration: '1' },
   })
@@ -45,11 +45,12 @@ function TransportCities() {
           type="submit"
           variant="primary"
           label="حفظ"
-          iconRight={<SaveIcon width={20} height={20} />}
+          icon={<SaveIcon width={20} height={20} />}
+          iconPosition="right"
         />
       </div>
     </form>
   )
 }
 
-export default TransportCities
+export default TransportCitiesForm
