@@ -15,12 +15,13 @@ import PrintPermitsIcon from "@/components/atoms/icons/sidebar/PrintPermitsIcon"
 import React from "react";
 import TransportCities from "@/components/organisms/transportCities";
 import { IColumnSchema } from "@/store/slices/tableSlice";
-import useTransportCitiesTableSchema from "@/hooks/settingsTableSchemas/useTransportCitiesTableSchema";
-import useSystemTablesTableSchema from "@/hooks/settingsTableSchemas/useSystemTablesTableSchema";
-import useVehicleCompaniesTableSchema from "@/hooks/settingsTableSchemas/useVehicleCompaniesTableSchema";
+import useTransportCitiesTableSchema from "@/pages/settings/hooks/useTransportCitiesTableSchema";
+import useSystemTablesTableSchema from "@/pages/settings/hooks/useSystemTablesTableSchema";
+import useVehicleCompaniesTableSchema from "@/pages/settings/hooks/useVehicleCompaniesTableSchema";
 import { fetchSystemTablesData, SYSTEM_TABLES_ITEMS_PER_PAGE } from "@/mocks/systemTables";
 import { fetchVehicleCompaniesData, VEHICLE_COMPANIES_ITEMS_PER_PAGE } from "@/mocks/vehicleCompanies";
 import { fetchTransportCitiesData, TRANSPORT_CITIES_ITEMS_PER_PAGE } from "@/mocks/transportCities";
+import Search from "@/pages/settings/components/systemsTable/search";
 
 export interface ISidebarRoute {
   route: string;
@@ -46,6 +47,7 @@ export const settingsSidebarRoutes: ISidebarRoute[] = [
     useTableSchema: useSystemTablesTableSchema,
     fetchData: fetchSystemTablesData,
     itemsPerPage: SYSTEM_TABLES_ITEMS_PER_PAGE,
+    beforeTableExtraComponent: <Search/>
   },
   {
     route: "vehicle-companies",

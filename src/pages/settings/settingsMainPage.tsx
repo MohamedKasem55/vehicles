@@ -46,7 +46,8 @@ function SettingsMainPage() {
 
   
   return (
-    <div className="">
+    <div className="flex flex-col gap-5">
+      {!!page.beforeTableExtraComponent && page.beforeTableExtraComponent}
       {page.useTableSchema && (
         <TableSection
           key={currentRoute}

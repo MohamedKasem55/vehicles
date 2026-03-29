@@ -4,7 +4,7 @@ import MagnifyingGlassIcon from "@/components/atoms/icons/MagnifyingGlassIcon";
 import SettingIcon from "@/components/atoms/icons/SettingIcon";
 import AuthorityIcon from "@/components/atoms/icons/AuthorityIcon";
 import { IPageConfig, PagesIds } from "@/types/page";
-import useInboxTableSchema from "@/hooks/useInboxTableSchema";
+import useInboxTableSchema from "@/pages/inbox/hooks/useInboxTableSchema";
 
 export const Pages: Record<PagesIds, IPageConfig> = {
   [PagesIds.SERVICES]: {

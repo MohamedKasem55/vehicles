@@ -1,14 +1,16 @@
 import React from "react";
 import Spinner from "@/components/atoms/spinner";
-
+export type ButtonLoaderPosition = "right" | "left"
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   label?: string;
-  icon?: React.ReactNode;
+  iconRight?: React.ReactNode;
+  iconLeft?: React.ReactNode;
   loading?: boolean;
   variant?: "primary" | "outline";
+  loaderPosition? : ButtonLoaderPosition,
 }
 
-function Button({ label, icon, loading = false, variant = "primary", ...props }: ButtonProps) {
+function Button({ label, iconRight,iconLeft, loaderPosition,loading = false, variant = "primary", ...props }: ButtonProps) {
   const baseClass = `border-none! outline-none! flex flex-row items-center justify-center
     ${loading || props.disabled ? "opacity-60 cursor-not-allowed" : "cursor-pointer hover:opacity-80"}
     ${props.className ?? ""}`;
@@ -23,8 +25,10 @@ function Button({ label, icon, loading = false, variant = "primary", ...props }:
       disabled={loading || props.disabled}
       className={`${baseClass} ${variantClass}`}
     >
-      {loading ? <Spinner size="sm" /> : icon}
+      {loading && loaderPosition === "left" ? <Spinner size="sm" /> : !!iconLeft ? iconLeft : ""}
       {label && <span>{label}</span>}
+      {loading && loaderPosition === "right" ? <Spinner size="sm" /> : !!iconRight ? iconRight : ""}
+
     </button>
   );
 }

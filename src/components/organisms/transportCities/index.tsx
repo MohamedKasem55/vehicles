@@ -1,7 +1,7 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import Input from '@/components/atoms/input/input'
-import Select, { SelectOption } from '@/components/atoms/input/select'
+import Select from '@/components/atoms/input/select'
 import SaveIcon from '@/components/atoms/icons/SaveIcon'
 import Button from '@/components/atoms/button'
 
@@ -11,7 +11,7 @@ interface ITransportCitiesForm {
   duration: string
 }
 
-const durationOptions: SelectOption[] = [
+const durationOptions: React.OptionHTMLAttributes<HTMLOptionElement>[] = [
   { value: '1', label: 'سنة واحدة' },
   { value: '2', label: 'سنتان' },
   { value: '3', label: '3 سنوات' },
@@ -45,7 +45,7 @@ function TransportCities() {
           type="submit"
           variant="primary"
           label="حفظ"
-          icon={<SaveIcon width={20} height={20} />}
+          iconRight={<SaveIcon width={20} height={20} />}
         />
       </div>
     </form>
