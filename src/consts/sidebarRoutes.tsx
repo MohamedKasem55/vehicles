@@ -23,6 +23,9 @@ import { fetchVehicleCompaniesData, VEHICLE_COMPANIES_ITEMS_PER_PAGE } from "@/m
 import { fetchTransportCitiesData, TRANSPORT_CITIES_ITEMS_PER_PAGE } from "@/mocks/transportCities";
 import Search from "@/pages/settings/systemsTable/components/search";
 import VehicleComapnyForm from "@/pages/settings/vehiclesCompanies/components/vehicleComapnyForm";
+import useVehicleModelsTableSchema from "@/pages/settings/vehiclesModels/hooks/useVehiclesModelsTableSchema";
+import VehicleModelForm from "@/pages/settings/vehiclesModels/components/vehicleModelForm";
+import { fetchVehicleModelsData, VEHICLE_MODELS_ITEMS_PER_PAGE } from "@/mocks/vehicleModels";
 
 export interface ISidebarRoute {
   route: string;
@@ -66,6 +69,11 @@ export const settingsSidebarRoutes: ISidebarRoute[] = [
     icon: VehicleModelsIcon,
     displayText: "طراز المركبات",
     isSelected: false,
+    hasTable: true,
+    useTableSchema: useVehicleModelsTableSchema,
+    fetchData: fetchVehicleModelsData,
+    itemsPerPage: VEHICLE_MODELS_ITEMS_PER_PAGE,
+    insideTableExtraComponent:<VehicleModelForm/>
   },
   {
     route: "vehicle-owners",

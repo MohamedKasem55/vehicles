@@ -1,5 +1,5 @@
 import React from "react";
-import { UseFormRegisterReturn } from "react-hook-form";
+import { FieldError, UseFormRegisterReturn } from "react-hook-form";
 import RightChevronIcon from "@/components/atoms/icons/RightChevronIcon";
 
 interface SelectProps {
@@ -7,9 +7,16 @@ interface SelectProps {
   registration: UseFormRegisterReturn;
   options: React.OptionHTMLAttributes<HTMLOptionElement>[];
   placeholder?: string;
+  error?: FieldError;
 }
 
-function Select({ label, registration, options, placeholder }: SelectProps) {
+function Select({
+  label,
+  registration,
+  options,
+  placeholder,
+  error,
+}: SelectProps) {
   return (
     <div className="flex flex-col gap-2 flex-1" dir="rtl">
       {!!label && (
@@ -20,11 +27,15 @@ function Select({ label, registration, options, placeholder }: SelectProps) {
       <div className="relative">
         <select
           {...registration}
-          className="w-full h-[50px] pr-[17px] pl-[41px] bg-white border border-[#E5E7EB] rounded-[8px] outline-none text-right font-inter text-[13.6px] text-[#111827] appearance-none cursor-pointer focus:border-[#348C68] transition-colors"
+          className={`w-full h-[50px] pr-[17px] pl-[41px] bg-white border border-[#E5E7EB] rounded-[8px] 
+          outline-none text-right font-inter text-[13.6px] text-[#111827] appearance-none 
+           transition-colors
+           ${error && "border-red-500"}
+           `}
         >
           {!!placeholder && (
             <option value="" disabled hidden>
-              <span className="!text-[#CCCCCC]">{placeholder}</span>
+              {placeholder}
             </option>
           )}
           {options.map((opt, index) => (
